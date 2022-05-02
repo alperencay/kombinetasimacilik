@@ -12,13 +12,6 @@ app.use(function(req, res, next) {
 });
 
 
-let chromiumPath =
-  "./node_modules/puppeteer/.local-chromium/linux-970485/chrome-linux";
-
-var fs = require("fs");
-var files = fs.readdirSync(
-  "./node_modules/puppeteer/.local-chromium/linux-970485/chrome-linux"
-);
 
 // push them above the router middleware!
 

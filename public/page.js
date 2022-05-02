@@ -1,3 +1,6 @@
+let denizVerisiURL = `/deniz-verisi`
+
+let karaVerisiURL = `/kara-verisi`
 // Example POST method implementation:
 async function postData(url = "", data = {}) {
   // Default options are marked with *
@@ -35,7 +38,6 @@ $("#btn-hesapla").click(() => {
   $("#deniz-mesafe").text("####");
   $("#kara-haritasi").addClass("d-none");
   $("#kara-mesafe").text("####");
-  let denizVerisiURL = "/deniz-verisi";
 
   postData(denizVerisiURL, {
     baslangicAdi: $("#baslangicKonum").val(),
@@ -43,7 +45,7 @@ $("#btn-hesapla").click(() => {
   })
     .then((response) => {
       // handle the response
-    console.log(response.data)
+      console.log(response.data)
       const { link, distance } = response.data;
 
       let harita = document.createElement("iframe");
@@ -63,8 +65,6 @@ $("#btn-hesapla").click(() => {
       // handle the error
     });
 
-  let karaVerisiURL = "/kara-verisi";
-
   postData(karaVerisiURL, {
     baslangicAdi: $("#baslangicKonum").val(),
     bitisAdi: $("#bitisKonum").val(),
@@ -72,7 +72,7 @@ $("#btn-hesapla").click(() => {
     .then((response) => {
       // handle the response
 
-    console.log(response.data)
+      console.log(response.data)
       let { link, distance } = response.data;
       console.log(link, distance);
       let harita = document.createElement("iframe");
