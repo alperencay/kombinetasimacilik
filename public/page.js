@@ -92,3 +92,22 @@ $("#btn-hesapla").click(() => {
       // handle the error
     });
 });
+
+
+$(document).ready(() => {
+  //Loader örneği
+  console.log("start")
+  console.log($("#progress-statue"))
+
+  let simdikiDeger = 0;
+
+  let loader = setInterval(() => {
+    simdikiDeger++;
+    $("#progress-statue").attr("aria-valuenow", simdikiDeger)
+    $("#progress-statue").css({ "width": `${simdikiDeger}%` })
+    $("#progress-statue").text(`${simdikiDeger}%`)
+    if (simdikiDeger >= 100) {
+      clearInterval(loader)
+    }
+  }, 50);
+})
