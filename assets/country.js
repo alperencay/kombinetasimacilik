@@ -1,246 +1,504 @@
 const countryDatas = [
   {
+    country: "Turkey",
+    ports: [
+      {
+        country: "Turkey",
+        name: "istanbul",
+      },
+      {
+        country: "Turkey",
+        name: "izmir",
+      },
+      {
+        country: "Turkey",
+        name: "mersin",
+      },
+    ],
+  },
+  {
     country: "Greece",
     ports: [
-      { country: "Greece", name: "Port of Achladi" },
-      { country: "Greece", name: "Port of Volos" },
-      { country: "Greece", name: "Port of Piraeus" },
+      {
+        country: "Greece",
+        name: "achladi",
+      },
+      {
+        country: "Greece",
+        name: "volos",
+      },
+      {
+        country: "Greece",
+        name: "piraeus",
+      },
     ],
   },
   {
     country: "Albania",
     ports: [
-      { country: "Albania", name: "Port of Durres" },
-      { country: "Albania", name: "Port of Shengjin" },
+      {
+        country: "Albania",
+        name: "durres",
+      },
+      {
+        country: "Albania",
+        name: "shengjin",
+      },
     ],
   },
   {
     country: "Croatia",
     ports: [
-      { country: "Croatia", name: "Port of Ploce" },
-      { country: "Croatia", name: "Port of Rijeka" },
+      {
+        country: "Croatia",
+        name: "ploce",
+      },
+      {
+        country: "Croatia",
+        name: "rijeka",
+      },
     ],
   },
   {
     country: "Slovenia",
-    ports: [{ country: "Slovania", name: "Port of Koper" }],
+    ports: [
+      {
+        country: "Slovania",
+        name: "koper",
+      },
+    ],
   },
   {
     country: "Italy",
     ports: [
-      { country: "Italy", name: "Port of Ancona" },
-      { country: "Italy", name: "Genoa Port" },
-      { country: "Italy", name: "Port of Cagliari" },
+      {
+        country: "Italy",
+        name: "ancona",
+      },
+      {
+        country: "Italy",
+        name: "genoa",
+      },
+      {
+        country: "Italy",
+        name: "cagliari",
+      },
     ],
   },
   {
     country: "France",
     ports: [
-      { country: "France", name: "Port of Le Havre" },
-      { country: "France", name: "Port of bordeaux" },
-      { country: "France", name: "Port of Marseille" },
+      {
+        country: "France",
+        name: "le havre",
+      },
+      {
+        country: "France",
+        name: "bordeaux",
+      },
+      {
+        country: "France",
+        name: "marseille",
+      },
     ],
   },
   {
     country: "Spain",
     ports: [
-      { country: "Spain", name: "Port of Valencia" },
-      { country: "Spain", name: "Port of A Coruna" },
-      { country: "Spain", name: "Port of almeria" },
+      {
+        country: "Spain",
+        name: "valencia",
+      },
+      {
+        country: "Spain",
+        name: "a coruna",
+      },
+      {
+        country: "Spain",
+        name: "almeria",
+      },
     ],
   },
   {
     country: "Portugal",
     ports: [
-      { country: "Portugal", name: "Port of lisbon" },
-      { country: "Portugal", name: "port of Leixoes" },
+      {
+        country: "Portugal",
+        name: "lisbon",
+      },
+      {
+        country: "Portugal",
+        name: "leixoes",
+      },
     ],
   },
   {
     country: "Belgium",
     ports: [
-      { country: "Belguim", name: "port of Antwerp" },
-      { country: "Belgium", name: "Port of Bruges" },
+      {
+        country: "Belguim",
+        name: "antwerp",
+      },
+      {
+        country: "Belgium",
+        name: "bruges",
+      },
     ],
   },
   {
     country: "Netherlands",
     ports: [
-      { country: "Netherlands", name: "port of rotterdam" },
-      { country: "Netherlands", name: "Port of Amsterdam" },
+      {
+        country: "Netherlands",
+        name: "rotterdam",
+      },
+      {
+        country: "Netherlands",
+        name: "amsterdam",
+      },
     ],
   },
   {
     country: "Poland",
     ports: [
-      { country: "Poland", name: "Port of Gdansk" },
-      { country: "Poland", name: "Port of Szkuner" },
+      {
+        country: "Poland",
+        name: "gdansk",
+      },
+      {
+        country: "Poland",
+        name: "szkuner",
+      },
     ],
   },
   {
     country: "Germany",
     ports: [
-      { country: "Germany", name: "port of hamburg" },
-      { country: "Germany", name: "Port of Duisburg" },
-      { country: "GErmany", name: "Port of Wilhelmshaven" },
+      {
+        country: "Germany",
+        name: "hamburg",
+      },
+      {
+        country: "Germany",
+        name: "duisburg",
+      },
+      {
+        country: "Germany",
+        name: "wilhelmshaven",
+      },
     ],
   },
   {
     country: "Lithuania",
-    ports: [{ country: "Lithuania", name: "Port of Klaipeda" }],
+    ports: [
+      {
+        country: "Lithuania",
+        name: "klaipeda",
+      },
+    ],
   },
   {
     country: "Latvia",
     ports: [
-      { country: "Latvia", name: "Freeport of Riga" },
-      { country: "Latvia", name: "port of  Ventspils" },
+      {
+        country: "Latvia",
+        name: "freeriga",
+      },
+      {
+        country: "Latvia",
+        name: "ventspils",
+      },
     ],
   },
   {
     country: "Estonia",
     ports: [
-      { country: "Estonia", name: "Muuga Harbour" },
-      { country: "Estonia", name: "Port of Tallinn" },
+      {
+        country: "Estonia",
+        name: "muuga harbour",
+      },
+      {
+        country: "Estonia",
+        name: "tallinn",
+      },
     ],
   },
   {
     country: "Finland",
     ports: [
-      { country: "Finland", name: "Kilpilahti Harbour" },
-      { country: "Finland", name: "port of Raahe" },
-      { country: "Finland", name: "port of helsinki" },
+      {
+        country: "Finland",
+        name: "kilpilahti harbour",
+      },
+      {
+        country: "Finland",
+        name: "raahe",
+      },
+      {
+        country: "Finland",
+        name: "helsinki",
+      },
     ],
   },
   {
     country: "Sweden",
     ports: [
-      { country: "Sweden", name: "Ports of Stockholm" },
-      { country: "Sweden", name: "Port of Goteborg " },
-      { country: "Sweden", name: "Copenhagen Malmo Port" },
+      {
+        country: "Sweden",
+        name: "stockholm",
+      },
+      {
+        country: "Sweden",
+        name: "goteborg",
+      },
+      {
+        country: "Sweden",
+        name: "copenhagen malmo port",
+      },
     ],
   },
   {
     country: "Norway",
     ports: [
-      { country: "Norway", name: "Port of Bergen" },
-      { country: "Norway", name: "Port of Oslo" },
+      {
+        country: "Norway",
+        name: "bergen",
+      },
+      {
+        country: "Norway",
+        name: "oslo",
+      },
     ],
   },
   {
     country: "Iceland",
     ports: [
-      { country: "Iceland", name: "port of Reykjavik" },
-      { country: "Iceland", name: "Port of Seydhisfjordhur" },
+      {
+        country: "Iceland",
+        name: "reykjavik",
+      },
+      {
+        country: "Iceland",
+        name: "seydhisfjordhur",
+      },
     ],
   },
   {
     country: "Ireland",
-    ports: [
-      { country: "Ireland", name: "Dublin Port" },
-      { country: "Ireland", name: "Limerick Dock" },
-    ],
     isIsland: true,
+    ports: [
+      {
+        country: "Ireland",
+        name: "dublin port",
+      },
+      {
+        country: "Ireland",
+        name: "limerick dock",
+      },
+    ],
   },
   {
     country: "United Kingdom",
-    ports: [
-      { country: "United Kingdom", name: "port of liverpool" },
-      { country: "United Kingdom", name: "Port of Immingham" },
-      { country: "United Kingdom", name: "Port of london" },
-    ],
     isIsland: true,
+    ports: [
+      {
+        country: "United Kingdom",
+        name: "liverpool",
+      },
+      {
+        country: "United Kingdom",
+        name: "immingham",
+      },
+      {
+        country: "United Kingdom",
+        name: "london",
+      },
+    ],
   },
   {
     country: "Denmark",
     ports: [
-      { country: "Denmark", name: "port of Aarhus" },
-      { country: "Denmark", name: "Copenhagen Malmö Port" },
-      { country: "Denmark", name: "port of Aalborg" },
+      {
+        country: "Denmark",
+        name: "aarhus",
+      },
+      {
+        country: "Denmark",
+        name: "copenhagen malmö port",
+      },
+      {
+        country: "Denmark",
+        name: "aalborg",
+      },
     ],
   },
   {
     country: "Bulgaria",
     ports: [
-      { country: "Bulgaria", name: "port of varna" },
-      { country: "Bulgaria", name: "Port of Bourgas" },
+      {
+        country: "Bulgaria",
+        name: "varna",
+      },
+      {
+        country: "Bulgaria",
+        name: "bourgas",
+      },
     ],
   },
   {
     country: "Romania",
     ports: [
-      { country: "Romania", name: "Port of Constanta" },
-      { country: "Romania", name: "Poarta Alba" },
+      {
+        country: "Romania",
+        name: "constanta",
+      },
+      {
+        country: "Romania",
+        name: "alba",
+      },
     ],
   },
   {
     country: "Moldova",
-    ports: [{ country: "Moldova", name: "Giurgiuleşti (Cahul) Terminal" }],
+    ports: [
+      {
+        country: "Moldova",
+        name: "giurgiuleşti (cahul) terminal",
+      },
+    ],
   },
   {
     country: "Ukranie",
-    ports: [{ country: "Ukranie", name: "Port of Odessa" }],
+    ports: [
+      {
+        country: "Ukranie",
+        name: "odessa",
+      },
+    ],
   },
   {
     country: "Russia",
     ports: [
-      { country: "Russia", name: "Port of Saint-Petersburg" },
-      { country: "Russia", name: "Novorossiysk Commercial Sea Port" },
-      { country: "Russia", name: "Port of Baltiysk" },
+      {
+        country: "Russia",
+        name: "saint-petersburg",
+      },
+      {
+        country: "Russia",
+        name: "novorossiysk",
+      },
+      {
+        country: "Russia",
+        name: "baltiysk",
+      },
     ],
   },
   {
-    country: "BosniaAndHerzegovina",
-    ports: [{ country: "BosniaAndHerzegovina", name: "Port of Neum" }],
+    country: "Bosnia and Herzegovina",
+    ports: [
+      {
+        country: "Bosnia and Herzegovina",
+        name: "neum",
+      },
+    ],
   },
   {
     country: "Serbia",
-    ports: [{ country: "Serbia", name: "Serbia" }],
+    ports: [
+      {
+        country: "Serbia",
+        name: "belgrade",
+      },
+    ],
   },
   {
     country: "Hungary",
-    ports: [{ country: "Hungary", name: "Port of Csepel" }],
+    ports: [
+      {
+        country: "Hungary",
+        name: "csepel",
+      },
+    ],
   },
   {
     country: "Austria",
     ports: [
-      { country: "Austria", name: "Port of Enns" },
-      { country: "Austria", name: "Port of Vienna" },
+      {
+        country: "Austria",
+        name: "enns",
+      },
+      {
+        country: "Austria",
+        name: "vienna",
+      },
     ],
   },
   {
     country: "Switzerland",
-    ports: [{ country: "Switzerland", name: "Port of Basle" }],
+    ports: [
+      {
+        country: "Switzerland",
+        name: "basle",
+      },
+    ],
   },
   {
     country: "Slovakia",
-    ports: [{ country: "Slovakia", name: "Port of Bratislava" }],
+    ports: [
+      {
+        country: "Slovakia",
+        name: "bratislava",
+      },
+    ],
   },
   {
-    country: "CzechRepublic",
+    country: "Czechia",
     ports: [
-      { country: "Austria", name: "Port of Vienna" },
-      { country: "Poland", name: "Port of Gdansk" },
+      {
+        country: "Austria",
+        name: "vienna",
+      },
+      {
+        country: "Poland",
+        name: "gdansk",
+      },
     ],
   },
   {
     country: "Belarus",
     ports: [
-      { country: "Lithuania", name: "Port of Klaipeda" },
-      { country: "Latvia", name: "Freeport of Riga" },
+      {
+        country: "Lithuania",
+        name: "klaipeda",
+      },
+      {
+        country: "Latvia",
+        name: "freeriga",
+      },
     ],
   },
   {
-    country: "NorthMacedonia",
+    country: "North Macedonia",
     ports: [
-      { country: "Albania", name: "Port of Durres" },
-      { country: "Greece", name: "Port of Volos" },
+      {
+        country: "Albania",
+        name: "durres",
+      },
+      {
+        country: "Greece",
+        name: "volos",
+      },
     ],
   },
   {
     country: "Kosovo",
-    ports: [{ country: "Albania", name: "Port of Shengjin" }],
+    ports: [
+      {
+        country: "Albania",
+        name: "shengjin",
+      },
+    ],
   },
-  {},
 ];
 
 module.exports = { countryDatas };
