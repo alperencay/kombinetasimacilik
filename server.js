@@ -2,8 +2,7 @@ const { countryDatas } = require("./assets/country");
 const {
   alDenizVerisi,
   alKaraVerisi,
-  hangiUlkeyeGidiliyor,
-  enIyiCozumuHesapla
+  getirKombineRotalari,
 } = require("./assets/helper");
 
 var express = require("express");
@@ -64,12 +63,22 @@ var server = app.listen(8081, function () {
   console.log("Example app listening at http://%s:%s", host, port);
 });
 
-app.get("/test", function (req, res) {
-  console.time("test")
-  enIyiCozumuHesapla("ankara","volos").then((data)=>{
-    console.timeEnd("test")
-    console.log(data)
-  })
+app.post("/test", async function (req, res) {
+  try {
+    const { baslangic, bitis } = req.body;
+
+    console.log("basladi");
+    console.time("test");
+    const hesaplananVeri = {
+      data: await getirKombineRotalari({
+        baslangic,
+        bitis,
+      }),
+    };
+    console.timeEnd("test");
+
+    res.end(JSON.stringify(hesaplananVeri));
+  } catch (error) {
+    res.end(JSON.stringify({ message: "HATALI VERİ GİRİŞİ" }));
+  }
 });
-
-
