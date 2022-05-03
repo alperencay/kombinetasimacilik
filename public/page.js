@@ -5,7 +5,7 @@ let karaVerisiURL = `/kara-verisi`;
 let hesaplamaURL = `/rota-hesapla`;
 
 var rotalar = [];
-/* var sahteRotalar = [
+var sahteRotalar = [
   [
     {
       link: "https://www.mapdevelopers.com/distance_from_to.php?&from=ankara&to=berlin",
@@ -31,8 +31,9 @@ var rotalar = [];
     },
   ],
 ];
- */
-$("#sonuc-alan").empty();
+
+console.log(sahteRotalar);
+rotalariOlustur(sahteRotalar);
 
 function haritaYukle(rotaBirimi) {
   let id = `rota-${rotaBirimi.id}`;
@@ -91,7 +92,7 @@ function verErisimDenizHaritasi(selector) {
     $(selector).scrollTop(390);
     $(selector).scrollLeft(760);
     $(selector).addClass("overflow-hidden");
-  }, 1000);
+  }, 3000);
 }
 
 function verErisimKaraHaritasi(selector) {
@@ -100,46 +101,45 @@ function verErisimKaraHaritasi(selector) {
     $(selector).scrollTop(340);
     $(selector).scrollLeft(175);
     $(selector).addClass("overflow-hidden");
-  }, 1000);
+  }, 3000);
 }
 
 function rotalariOlustur(rotaVerileri) {
-  $("#sonuc-alan").empty();
-  let rotaIndex = 0;
+  try {
+    $("#sonuc-alan").empty();
+    let rotaIndex = 0;
 
-  rotaVerileri.forEach((rota) => {
-    const rotaGrubu = document.createElement("div");
-    rotaGrubu.className =
-      "rota-grup col-12 d-flex align-items-center justify-content-center flex-wrap";
+    rotaVerileri.forEach((rota) => {
+      const rotaGrubu = document.createElement("div");
+      rotaGrubu.className =
+        "rota-grup col-12 d-flex align-items-center justify-content-center flex-wrap";
 
-    rota.map((rotaBirimi) => {
-      rotaBirimi.id = ++rotaIndex;
+      rota.map((rotaBirimi) => {
+        rotaBirimi.id = ++rotaIndex;
 
-      let sinifAdi = alTipineGöreSinifAdi(rotaBirimi.type);
-      let htmlMetni = `
-    <div class="rota" class="h-100 d-flex flex-column align-items-center justify-content-center">
-      <div class="${sinifAdi} d-none" id="rota-${rotaIndex}"></div>
-      <h1 class="rota-mesafe">${rotaBirimi.distance}</h1>  
-    </div>`;
-      $(rotaGrubu).append(htmlMetni);
+        let sinifAdi = alTipineGöreSinifAdi(rotaBirimi.type);
+        let htmlMetni = `
+        <div class="rota" class="h-100 d-flex flex-column align-items-center justify-content-center">
+          <div class="${sinifAdi} d-none" id="rota-${rotaIndex}"></div>
+          <h1 class="rota-mesafe">${rotaBirimi.distance}</h1>  
+        </div>`;
+        $(rotaGrubu).append(htmlMetni);
+      });
+
+      $("#sonuc-alan").append(rotaGrubu);
     });
 
-    $("#sonuc-alan").append(rotaGrubu);
-  });
-
-  rotaVerileri.forEach((rota) => {
-    rota.forEach((rotaBirimi) => {
-      haritaYukle(rotaBirimi);
+    rotaVerileri.forEach((rota) => {
+      rota.forEach((rotaBirimi) => {
+        haritaYukle(rotaBirimi);
+      });
     });
-  });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 $("#btn-hesapla").click(() => {
-  $("#deniz-haritasi").addClass("d-none");
-  $("#deniz-mesafe").text("####");
-  $("#kara-haritasi").addClass("d-none");
-  $("#kara-mesafe").text("####");
-
   postData(hesaplamaURL, {
     baslangic: $("#baslangicKonum").val(),
     bitis: $("#bitisKonum").val(),

@@ -77,6 +77,7 @@ app.post("/rota-hesapla", async function (req, res) {
     };
     console.timeEnd("test");
 
+    console.log(JSON.stringify(hesaplananVeri));
     res.end(JSON.stringify(hesaplananVeri));
   } catch (error) {
     res.end(JSON.stringify({ message: "HATALI VERİ GİRİŞİ" }));
