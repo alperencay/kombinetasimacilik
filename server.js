@@ -63,7 +63,7 @@ var server = app.listen(8081, function () {
   console.log("Example app listening at http://%s:%s", host, port);
 });
 
-app.post("/test", async function (req, res) {
+app.post("/rota-hesapla", async function (req, res) {
   try {
     const { baslangic, bitis } = req.body;
 

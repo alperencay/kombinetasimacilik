@@ -6,20 +6,23 @@ body {
   height: 100%;
 }
 
-.sonuc-alan {
-  height: 35rem;
+#sonuc-alan {
   width: 100%;
   background: #fafafa;
 }
 
-#deniz-haritasi {
+.deniz-haritasi {
   height: 480px;
   width: 680px;
   overflow: scroll;
 }
 
-#kara-haritasi {
+.kara-haritasi {
   height: 25.5rem;
   width: 49rem;
   overflow: scroll;
+}
+
+.rota {
+  margin: auto;
 }
