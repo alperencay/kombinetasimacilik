@@ -6,3 +6,4 @@ node_modules
 .glitch-assets
 .config
 .pki
+.vscode

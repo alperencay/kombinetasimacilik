@@ -27,8 +27,12 @@ app.use(express.json());
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", function (req, res) {
+/* app.get("/", function (req, res) {
   res.sendFile("./public/page.html", { root: __dirname });
+}); */
+
+app.get("/", function (req, res) {
+  res.sendFile("./Homage/Anasayfa.html", { root: __dirname });
 });
 
 app.post("/deniz-verisi", async function (req, res) {
