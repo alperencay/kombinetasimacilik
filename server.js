@@ -25,14 +25,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const path = require("path");
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname)));
 
 /* app.get("/", function (req, res) {
   res.sendFile("./public/page.html", { root: __dirname });
 }); */
 
 app.get("/", function (req, res) {
-  res.sendFile("./Homage/Anasayfa.html", { root: __dirname });
+  res.sendFile("./Homepage/Anasayfa.html", { root: __dirname });
 });
 
 app.post("/deniz-verisi", async function (req, res) {

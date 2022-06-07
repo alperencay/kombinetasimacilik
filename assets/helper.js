@@ -5,7 +5,7 @@ function gecikmeEkle(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function alDenizVerisi(baslangic = "istanbul", bitis = "volos") {
+async function alDenizVerisi(baslangic = "istanbul", bitis = "hamburg") {
   console.log("al deniz verisi", baslangic, bitis);
 
   const browser = await puppeteer.launch({
@@ -42,7 +42,7 @@ async function alDenizVerisi(baslangic = "istanbul", bitis = "volos") {
   }
 }
 
-async function alKaraVerisi(baslangic = "istanbul", bitis = "volos") {
+async function alKaraVerisi(baslangic = "istanbul", bitis = "hamburg") {
   console.log("al kara verisi", baslangic, bitis);
 
   const limanIceriyorMu =
