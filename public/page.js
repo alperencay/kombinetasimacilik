@@ -8,7 +8,7 @@ var rotalar = [];
 var sahteRotalar = [
   [
     {
-      link: "https://www.mapdevelopers.com/distance_from_to.php?&from=ankara&to=berlin",
+      link: "https://www.mapdevelopers.com/distance_from_to.php?&from=ankara&to=hamburg",
       distance: 1636.89,
       type: "kara",
     },
@@ -25,7 +25,7 @@ var sahteRotalar = [
       type: "deniz",
     },
     {
-      link: "https://www.mapdevelopers.com/distance_from_to.php?&from=port of duisburg&to=berlin",
+      link: "https://www.mapdevelopers.com/distance_from_to.php?&from=port of duisburg&to=hamburg",
       distance: 340.16,
       type: "kara",
     },
