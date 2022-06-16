@@ -1,17 +1,17 @@
 const countryDatas = [
   {
-    country: "Turkey",
+    country: "Türkiye",
     ports: [
       {
-        country: "Turkey",
+        country: "Türkiye",
         name: "istanbul",
       },
       {
-        country: "Turkey",
+        country: "Türkiye",
         name: "izmir",
       },
       {
-        country: "Turkey",
+        country: "Türkiye",
         name: "mersin",
       },
     ],
