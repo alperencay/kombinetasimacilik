@@ -1,6 +1,9 @@
 const puppeteer = require("puppeteer");
 const { countryDatas } = require("./country");
 
+
+const emailServerUrl = "secretive-omniscient-gilmoreosaurus.glitch.me"
+
 function gecikmeEkle(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -300,7 +303,6 @@ async function getirKombineRotalari({ baslangic, bitis }) {
       cozumler.push([karadanLimana, limandanLimana, limandanKaraya]);
     }
   }
-
   return cozumler;
 }
 
