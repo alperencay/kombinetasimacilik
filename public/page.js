@@ -33,8 +33,28 @@ var sahteRotalar = [
 ];
 
 console.log(sahteRotalar);
-rotalariOlustur(sahteRotalar);
 
+const rotaParametreleri = GetURLParameter("data");
+
+if(rotaParametreleri) rotalariOlustur(JSON.parse(decodeURIComponent(rotaParametreleri)).data)
+  
+else rotalariOlustur(sahteRotalar);
+
+
+
+function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}
 function haritaYukle(rotaBirimi) {
   let id = `rota-${rotaBirimi.id}`;
   let harita = document.createElement("iframe");
@@ -106,6 +126,7 @@ function verErisimKaraHaritasi(selector) {
 
 function rotalariOlustur(rotaVerileri) {
   try {
+    console.log(rotaVerileri)
     $("#sonuc-alan").empty();
     let rotaIndex = 0;
 
@@ -115,6 +136,7 @@ function rotalariOlustur(rotaVerileri) {
         "rota-grup col-12 d-flex align-items-center justify-content-center flex-wrap";
 
       rota.map((rotaBirimi) => {
+        console.log(rotaBirimi)
         rotaBirimi.id = ++rotaIndex;
 
         let sinifAdi = alTipineGöreSinifAdi(rotaBirimi.type);
