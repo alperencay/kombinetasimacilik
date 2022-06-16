@@ -36,7 +36,11 @@ console.log(sahteRotalar);
 
 const rotaParametreleri = GetURLParameter("data");
 
-if(rotaParametreleri) rotalariOlustur(JSON.parse(decodeURIComponent(rotaParametreleri)).data)
+if(rotaParametreleri) {
+  $(".girdi-alani").addClass("d-none");
+  $(".hesaplama-alan").addClass("d-none");
+  rotalariOlustur(JSON.parse(decodeURIComponent(rotaParametreleri)).data)
+}
   
 else rotalariOlustur(sahteRotalar);
 
@@ -133,7 +137,7 @@ function rotalariOlustur(rotaVerileri) {
     rotaVerileri.forEach((rota) => {
       const rotaGrubu = document.createElement("div");
       rotaGrubu.className =
-        "rota-grup col-12 d-flex align-items-center justify-content-center flex-wrap";
+        "rota-grup col-12 d-flex align-items-center justify-content-center flex-wrap overflow-hidden";
 
       rota.map((rotaBirimi) => {
         console.log(rotaBirimi)
@@ -141,9 +145,9 @@ function rotalariOlustur(rotaVerileri) {
 
         let sinifAdi = alTipineGöreSinifAdi(rotaBirimi.type);
         let htmlMetni = `
-        <div class="rota" class="h-100 d-flex flex-column align-items-center justify-content-center">
+        <div class="rota my-4 my-lg-auto" class="h-100 d-flex flex-column align-items-center justify-content-center">
           <div class="${sinifAdi} d-none" id="rota-${rotaIndex}"></div>
-          <h1 class="rota-mesafe">${rotaBirimi.distance}</h1>  
+          <h1 class="rota-mesafe text-center mt-4">${rotaBirimi.distance} Mil</h1>  
         </div>`;
         $(rotaGrubu).append(htmlMetni);
       });
@@ -162,32 +166,12 @@ function rotalariOlustur(rotaVerileri) {
 }
 
 $("#btn-hesapla").click(() => {
+  alert("İsteğiniz alınmıştır, hesaplamalar yapıldıktan sonra e-postanıza verilen link üzerinden haritalara istediğiniz zaman ulaşabilirsiniz.")
   postData(hesaplamaURL, {
     baslangic: $("#baslangicKonum").val(),
     bitis: $("#bitisKonum").val(),
+    eposta : $("#epostaGirdi").val()
   })
-    .then((response) => {
-      // handle the response
-      console.log(response.data);
-      rotalariOlustur(response.data);
-      /*   const { link, distance } = response.data;
-
-      let harita = document.createElement("iframe");
-
-      harita.id = "deniz-iframe";
-      harita.width = "1920";
-      harita.height = "1080";
-      harita.onload = verErisimDenizHaritasi;
-      harita.src = link;
-      $("#deniz-haritasi").empty();
-      $("#deniz-mesafe").text(distance);
-
-      document.getElementById("deniz-haritasi").appendChild(harita); */
-    })
-    .catch((error) => {
-      console.trace(error);
-      // handle the error
-    });
 });
 
 /* $(document).ready(() => {

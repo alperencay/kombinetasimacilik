@@ -20,7 +20,7 @@ async function alDenizVerisi(baslangic = "istanbul", bitis = "hamburg") {
     const url = `http://ports.com/sea-route/#/?a=0&b=0&c=${
       "port of " + baslangic
     }&d=${"port of " + bitis}`;
-    await page.goto(url, { timeout: 120000 });
+    await page.goto(url, { timeout: 600000 });
 
     await page.waitForFunction(
       'document.getElementById("route-toolbox").style.display === "block"'
@@ -60,7 +60,7 @@ async function alKaraVerisi(baslangic = "istanbul", bitis = "hamburg") {
     const page = await browser.newPage();
 
     const url = `https://www.mapdevelopers.com/distance_from_to.php?&from=${baslangic}&to=${bitis}`;
-    await page.goto(url, { timeout: 120000 });
+    await page.goto(url, { timeout: 600000 });
 
     await page.waitForFunction(
       'document.getElementById("driving_status").textContent != "Driving distance: 0.0 miles , 0.0 kilometers (km) , 0 feet , 0 meters"'
@@ -80,7 +80,7 @@ async function alKaraVerisi(baslangic = "istanbul", bitis = "hamburg") {
       bitis = bitis.replace("port of", "").trim();
 
       const url = `https://www.mapdevelopers.com/distance_from_to.php?&from=${baslangic}&to=${bitis}`;
-      await page.goto(url, { timeout: 120000 });
+      await page.goto(url, { timeout: 600000 });
 
       await page.waitForFunction(
         'document.getElementById("driving_status").textContent != "Driving distance: 0.0 miles , 0.0 kilometers (km) , 0 feet , 0 meters"'
@@ -120,7 +120,7 @@ async function hangiUlkeyeGidiliyor(bitis) {
     const page = await browser.newPage();
 
     const url = `https://www.mapdevelopers.com/what-country-am-i-in.php?address=${bitis}`;
-    await page.goto(url, { timeout: 120000 });
+    await page.goto(url, { timeout: 600000 });
 
     await page.waitForFunction(
       'document.getElementById("display_country").textContent != ""'
