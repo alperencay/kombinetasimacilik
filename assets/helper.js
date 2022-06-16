@@ -108,11 +108,12 @@ async function alKaraVerisi(baslangic = "istanbul", bitis = "hamburg") {
 
 async function hangiUlkeyeGidiliyor(bitis) {
   console.log("hangi ülkeye gidiliyor", bitis);
-
+    
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox"],
-  });
+      args: ["--no-sandbox"],
+    });
   try {
+    
     const page = await browser.newPage();
 
     const url = `https://www.mapdevelopers.com/what-country-am-i-in.php?address=${bitis}`;
@@ -140,8 +141,14 @@ function bulKarayoluBaglantisiVarMi(ulkeAdi) {
 }
 
 function bulUlkeninLimanlarini(ulkeAdi) {
+  try{
   console.log("bul ülkenin limanlarini", ulkeAdi);
   return countryDatas.find(({ country }) => country == ulkeAdi).ports;
+  }
+  catch{
+    console.log("ülke limani bulunmasinda hata")
+    return []
+  }
 }
 
 async function enYakinKaradanLimanaBul(yer, limanlar) {
