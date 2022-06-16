@@ -8,6 +8,16 @@ const {
 var express = require("express");
 var app = express();
 
+var nodemailer = require("nodemailer");
+
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "kombinerotahesaplayici@gmail.com",
+    pass: "trnnsgqtmeqhueyi",
+  },
+});
+
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -26,6 +36,7 @@ app.use(express.json());
 
 const path = require("path");
 app.use(express.static(path.join(__dirname)));
+app.use('/rota-sonuc', express.static('public'))
 
 /* app.get("/", function (req, res) {
   res.sendFile("./public/page.html", { root: __dirname });
@@ -79,6 +90,21 @@ app.post("/rota-hesapla", async function (req, res) {
         bitis,
       }),
     };
+
+    var mailOptions = {
+      from: "kombinerotahesaplayici@gmail.com",
+      to: "napcan4827@gmail.com, alperenlider@gmail.com",
+      subject: "Sending Email using Node.js",
+      text: `http://probable-near-gastonia.glitch.me/rota-sonuc?data=${encodeURIComponent(JSON.stringify(hesaplananVeri))}`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
     console.timeEnd("test");
 
     console.log(JSON.stringify(hesaplananVeri));
@@ -86,4 +112,9 @@ app.post("/rota-hesapla", async function (req, res) {
   } catch (error) {
     res.end(JSON.stringify({ message: "HATALI VERİ GİRİŞİ" }));
   }
+});
+
+app.get("/rota-sonuc", function (req, res) {
+  console.log(__dirname)
+  res.sendFile("./public/page.html", { root: __dirname });
 });
