@@ -8,6 +8,7 @@ const {
 var express = require("express");
 var app = express();
 
+var http = express();
 
 app.enable("trust proxy");
 app.use((req, res, next) => {
@@ -101,58 +102,65 @@ app.post("/rota-hesapla", async function (req, res) {
   }
 });
 
-let controlIntervalId = null
+let controlIntervalId = null;
 
 app.get("/disable-interval", function (req, res) {
   clearInterval(controlIntervalId);
-  res.end("OK")
+  res.end("OK");
 });
 
 app.get("/enable-interval", function (req, res) {
   controlIntervalId = createControlInterval();
-  res.end("OK")
+  res.end("OK");
 });
 
 function createControlInterval() {
-  return setInterval(async function() {
+  return setInterval(async function () {
     console.log(locker);
-    console.log(requests.length)
-    
-    if (requests.length == 0) {clearInterval(this); return}
-    
+    console.log(requests.length);
+
+    if (requests.length == 0) {
+      clearInterval(this);
+      return;
+    }
+
     if (locker) {
       return;
     }
-    
+
     console.log("kuyruktan cikti");
     locker = true;
-    const { baslangic, bitis, eposta } = requests[0];
-    const hesaplananVeri = {
-      data: await getirKombineRotalari({
-        baslangic,
-        bitis,
-      }),
-    };
-  
-    var mailOptions = {
-      from: "kombinerotahesaplayici@gmail.com",
-      to: eposta,
-      subject: "Kombine Taşımacılık Harita Linki",
-      text: `http://kombine-tasimacilik-v1.glitch.me/rota-sonuc?data=${encodeURIComponent(
-        JSON.stringify(hesaplananVeri)
-      )}`,
-    };
+    try {
+      const { baslangic, bitis, eposta } = requests[0];
+      const hesaplananVeri = {
+        data: await getirKombineRotalari({
+          baslangic,
+          bitis,
+        }),
+      };
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("Email sent: " + info.response);
-      }
-    });
+      var mailOptions = {
+        from: "kombinerotahesaplayici@gmail.com",
+        to: eposta,
+        subject: "Kombine Taşımacılık Harita Linki",
+        text: `http://kombine-tasimacilik-v1.glitch.me/rota-sonuc?data=${encodeURIComponent(
+          JSON.stringify(hesaplananVeri)
+        )}`,
+      };
 
-    requests.shift();
-    locker = false;
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      requests.shift();
+      locker = false;
+    }
   }, 1 * 10000);
 }
 
